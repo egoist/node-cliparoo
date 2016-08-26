@@ -6,16 +6,27 @@
 var exec = require('child_process').exec;
 var escape = require('shell-escape');
 var os = require('os');
+var switchy = require('switchy')
 
 // platforms
 
-switch (os.platform()) {
-  case 'freebsd': return module.exports = freebsd;
-  case 'win32': return module.exports = windows;
-  case 'linux': return module.exports = linux;
-  case 'darwin': return module.exports = mac;
-  default: return module.exports = unsupported;
-}
+switchy({
+  freebsd() {
+    module.exports = freebsd;
+  },
+  win32() {
+    module.exports = windows;
+  },
+  linux() {
+    module.exports = linux;
+  },
+  darwin() {
+    module.exports = mac;
+  },
+  default() {
+    module.exports = unsupported;
+  }
+})(os.platform())
 
 // unsupported
 

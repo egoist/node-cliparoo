@@ -1,20 +1,20 @@
 
-# Cliparoo
+# Clipboard
 
-  Sorry for the stupid name. Copies strings to the clipboard, for CLIs.
+
 
 ## Installation
 
 ```
-$ npm install cliparoo
+$ npm install node-clipboard
 ```
 
 ## Example
 
 ```js
-var clip = require('cliparoo');
+var clip = require('node-clipboard');
 
-clip('Hello "World"', function(err){
+clip('Hello "World"', function(err) {
   if (err) throw err;
   console.log('copied!');
 });
